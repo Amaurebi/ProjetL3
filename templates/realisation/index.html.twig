@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realisation{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+            <div class="container-fluid">
+            <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="color : #D6955B;">Realisation</h2>
+            {% for realisation in realisations %}
+                {# <tr>
+                    <td>{{ realisation.titre }}</td>
+                    <td>{{ realisation.description }}</td>
+                    <td>{{ realisation.dateDebut ? realisation.dateDebut|date('Y-m-d') : '' }}</td>
+                    <td>{{ realisation.dateFin ? realisation.dateFin|date('Y-m-d') : '' }}</td>
+                    <td>{{ realisation.cout }}</td>
+                    <td>{{ realisation.etat }}</td>
+                    <td>
+                        <a href="{{ path('realisation_show', {'id': realisation.id}) }}">show</a>
+                        <a href="{{ path('realisation_edit', {'id': realisation.id}) }}">edit</a>
+                    </td>
+                </tr> #}
+                <div class="card mb-3" style="border : 2px solid #D6955B;">
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{realisation.image.url}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8" style="background-color : #FEEAA1;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ realisation.titre }}</h5>
+                            <p class="card-text">{{ realisation.description }}</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card mb-3">
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{realisation.image.url}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ realisation.titre }}</h5>
+                            <p class="card-text">{{ realisation.description }}</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card mb-3">
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{realisation.image.url}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ realisation.titre }}</h5>
+                            <p class="card-text">{{ realisation.description }}</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+        </div>
+    </div>
+    {# {% include 'pagination.html.twig' %} #}
+    {% include 'footer.html.twig' %}
+{% endblock %}

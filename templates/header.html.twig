@@ -1,0 +1,49 @@
+<nav class="navbar-expand-lg navbar navbar-dark" style="background-color: #18534F;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ path('home') }}"><img src="/img/logo.png" style="max-height : 70px;" alt="logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item me-3">
+          <a class="nav-link" href="{{ path('charpentes') }}">Charpentes</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="{{ path('couvertures') }}">Couvertures</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="ouvrages">Ouvrages</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="#">Actualités</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="#">Devis</a>
+        </li>
+        {% if( is_granted('ROLE_ADMIN') ) %}
+          <li class="nav-item me-3">
+           <a class="nav-link" href="#">Messagerie</a>
+          </li>
+        {% endif %}
+      </ul>
+      <div class="nav-item dropdown me-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color : #ECF8F6;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% if app.user %}
+              <li><a class="dropdown-item" href="">Mon compte</a></li>
+              <li><a class="dropdown-item" href="{{ path('app_logout') }}">Déconnection</a></li>
+            {% else %}
+              <li><a class="dropdown-item" href="{{ path('app_login') }}">Connection</a></li>
+              <li><a class="dropdown-item" href="{{ path('app_register') }}">Inscription</a></li>
+            {% endif %}
+          </ul> 
+      </div>
+    </div>
+  </div>
+</nav>
