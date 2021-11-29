@@ -36,4 +36,10 @@ class Kernel extends BaseKernel
         }
     }
 
+    /*public function registerBundles()
+    {
+        return [
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+        ];
+    }*/
 }

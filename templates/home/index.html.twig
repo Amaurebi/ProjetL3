@@ -5,26 +5,18 @@
 {% block body %}
 {% include 'header.html.twig' %}
 {% include 'home/slider.html.twig' %}
+<div class="position-absolute start-50 translate-middle" style="top : 270px;">
+  <h1 class="p-4 text-white border border-white border-5 fw-bold display-1">ABC Legermain</h1>
+</div>
 <div class="container-fluid">
-  <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="color : #D6955B;">ABC Legermain</h2>
-  <div class="col-12 col-md-10 mx-auto fs-4">
-    <div class="row g-0 align-items-center">
-      <div class="col-12 col-md-5 mx-auto">
-        <p>La société Legermain, jeune entreprise alliant créativité et dynamisme, vous propose de mettre son savoir faire à votre service.
-        Pour  vos travaux de charpente, couverture, escaliers et autres ouvrages spécifiques faites confiance à deux techniciens du bois, André Legermain et Philippe Troquin habitués à intervenir, notamment, sur des bâtiments classés Monuments Historiques.</p>
-      </div>
-      <div class="col-12 col-md-5 mx-auto"><img src="/img/img1.jpg" class="img-fluid rounded mw-100"></div>
-    </div>
-    <div class="row g-0 flex-row-reverse mt-5 align-items-center">
-      <div class="col-12 col-md-5 mx-auto">
-        <p>Nous apportons un soin particulier à l’écoute et au conseil, deux points essentiels qui précédent la réalisation de vos ouvrages.
-        Réaliser un travail artisanal, respectueux des traditions, tout en accordant notre prestation à votre budget, telle est notre ambition.
-
-        Nous serons également enchantés de répondre à votre demande pour tout ouvrage spécifique, personnalisé ou non conventionnel. 
-
-        Afin d’être plus concret, nous vous invitons à découvrir, en images, les ouvrages déjà réalisés. </p>
-      </div>
-      <div class="col-12 col-md-5 mx-auto"><img src="/img/img1.jpg" class="img-fluid rounded mw-100"></div>
+  <div class="col-12 mx-auto fs-5 p-5" style="background-color : #FEEAA1;">
+    <div class="col-12 col-lg-10 mx-auto">
+      <p class="text-center">La société Legermain, jeune entreprise alliant créativité et dynamisme, vous propose de mettre son savoir faire à votre service.
+      Pour  vos travaux de charpente, couverture, escaliers et autres ouvrages spécifiques faites confiance à deux techniciens du bois, André Legermain et Philippe Troquin habitués à intervenir, notamment, sur des bâtiments classés Monuments Historiques.
+      Nous apportons un soin particulier à l’écoute et au conseil, deux points essentiels qui précédent la réalisation de vos ouvrages.
+      Réaliser un travail artisanal, respectueux des traditions, tout en accordant notre prestation à votre budget, telle est notre ambition.
+      Nous serons également enchantés de répondre à votre demande pour tout ouvrage spécifique, personnalisé ou non conventionnel.
+      Afin d’être plus concret, nous vous invitons à découvrir, en images, les ouvrages déjà réalisés.</p>
     </div>
   </div>
   <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="letter-spacing : 4px; color : #D6955B;">Dernières réalisations</h2>
@@ -33,26 +25,8 @@
     <div class="col-12 col-md-6 col-lg-4 mt-4">
       <div class="card  mx-auto" style="width: 19rem; border : 2px solid #D6955B;">
         <img src="{{realisation.image.url}}" class="card-img-top" alt="{{realisation.image.legende}}">
-        <div class="card-body">
-          <h5 class="card-title">{{realisation.titre}}</h5>
-          <p class="card-text">{{realisation.description}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 mt-4">
-      <div class="card  mx-auto" style="width: 19rem;">
-        <img src="{{realisation.image.url}}" class="card-img-top" alt="{{realisation.image.legende}}">
-        <div class="card-body">
-          <h5 class="card-title">{{realisation.titre}}</h5>
-          <p class="card-text">{{realisation.description}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 mt-4">
-      <div class="card  mx-auto" style="width: 19rem;">
-        <img src="{{realisation.image.url}}" class="card-img-top" alt="{{realisation.image.legende}}">
-        <div class="card-body">
-          <h5 class="card-title">{{realisation.titre}}</h5>
+        <div class="card-body" style="background-color : #FEEAA1;">
+          <h5 class="card-title" style="color : #D6955B;">{{realisation.titre}}</h5>
           <p class="card-text">{{realisation.description}}</p>
         </div>
       </div>
@@ -61,7 +35,7 @@
     <p>no records found</p>
   {%endfor%}
     <div class="text-center mt-5">
-      <a href="{{ path('realisation_index') }}" class="btn btn-primary">Voir plus</a>
+      <a href="{{ path('realisation_index') }}" class="btn btn-primary border-0" style="background-color : #D6955B;">Voir plus</a>
     </div>
   </div>
 </div>

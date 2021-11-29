@@ -16,8 +16,10 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class RealisationController extends AbstractController
 {
-    
-    /*public function index(
+    /**
+     * @Route("/", name="realisation_index", methods={"GET"})
+     */
+    public function index(
         RealisationRepository $realisationRepository,
         PaginatorInterface $paginator,
         Request $request
@@ -27,22 +29,19 @@ class RealisationController extends AbstractController
         $realisations = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            5
+            1
         );
         return $this->render('realisation/index.html.twig', [
-            'realisations' => $realisations,
+            'pagination' => $realisations,
         ]);
-    }*/
+    }
 
-    /**
-     * @Route("/", name="realisation_index", methods={"GET"})
-     */
-    public function index( RealisationRepository $realisationRepository ): Response
+    /*public function index( RealisationRepository $realisationRepository ): Response
     {
         return $this->render('realisation/index.html.twig', [
             'realisations' => $realisationRepository->findAllByDate(),
         ]);
-    }
+    }*/
 
     /**
      * @Route("/new", name="realisation_new", methods={"GET","POST"})
