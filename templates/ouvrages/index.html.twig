@@ -5,26 +5,33 @@
 {% block body %}
 {% include 'header.html.twig' %}
 {% include 'home/slider.html.twig' %}
+<div class="position-absolute start-50 translate-middle" style="top : 270px;">
+  <h1 class="p-4 text-white border border-white border-5 fw-bold display-1">Ouvrages</h1>
+</div>
 <div class="container-fluid">
-    <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="color : #D6955B; letter-spacing : 4px;">Ouvrages spécifiques</h2>
-    <div class="col-12 col-md-10 mx-auto fs-4">
-        <div class="row g-0 align-items-center">
-        <div class="col-12 col-md-5 mx-auto">
-            <p>Escaliers, rambardes et garde-corps, lucarnes et autres menuiseries artisanales…
+    <div class="col-12 mx-auto fs-5 p-5" style="background-color : #FEEAA1;">
+    <div class="col-12 col-lg-10 mx-auto">
+      <p class="text-center">Escaliers, rambardes et garde-corps, lucarnes et autres menuiseries artisanales…
             Nous mettons notre maîtrise de l'ouvrage au service de vos attentes.
-            Sobre ou travaillé, d'un style rustique ou moderne, racontez nous de votre projet et nous trouverons ensemble une réponse adaptée à votre budget et à votre demande.</p>
-        </div>
-        <div class="col-12 col-md-5 mx-auto"><img src="/img/HPIM2921.jpg" class="img-fluid rounded mw-100"></div>
-        </div>
-        <div class="row g-0 flex-row-reverse mt-5 align-items-center">
-        <div class="col-12 col-md-5 mx-auto">
-            <p>Escaliers, rambardes et garde-corps, lucarnes et autres menuiseries artisanales…
-            Nous mettons notre maîtrise de l'ouvrage au service de vos attentes.
-            Sobre ou travaillé, d'un style rustique ou moderne, racontez nous de votre projet et nous trouverons ensemble une réponse adaptée à votre budget et à votre demande.</p>
-        </div>
-        <div class="col-12 col-md-5 mx-auto"><img src="/img/GEDC0589.jpg" class="img-fluid rounded mw-100"></div>
-        </div>
+            Sobre ou travaillé, d'un style rustique ou moderne, racontez nous de votre projet et nous trouverons ensemble une réponse adaptée à votre budget et à votre demande. </p>
     </div>
+  </div>
+  <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="letter-spacing : 4px; color : #D6955B;">Dernièrs ouvrages spécifiques</h2>
+  <div class="row col-12 col-xl-10 mx-auto">
+  {% for realisation in realisations %}
+    <div class="col-12 col-md-6 col-lg-4 mt-4">
+      <div class="card  mx-auto" style="width: 19rem; border : 2px solid #D6955B;">
+        <img src="/uploads/images/realisation/{{realisation.fichiers|first.url}}" class="card-img-top" style="max-height: 250px;">
+        <div class="card-body" style="background-color : #FEEAA1;">
+          <h5 class="card-title" style="color : #D6955B;">{{realisation.titre}}</h5>
+          <p class="card-text">{{realisation.description}}</p>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p>no records found</p>
+  {%endfor%}
+  </div>
 </div>
 {% include 'footer.html.twig' %}
 {% endblock %}

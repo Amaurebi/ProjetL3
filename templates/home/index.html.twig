@@ -24,7 +24,7 @@
   {% for realisation in realisations %}
     <div class="col-12 col-md-6 col-lg-4 mt-4">
       <div class="card  mx-auto" style="width: 19rem; border : 2px solid #D6955B;">
-        <img src="{{realisation.image.url}}" class="card-img-top" alt="{{realisation.image.legende}}">
+        <img src="/uploads/images/realisation/{{realisation.fichiers|first.url}}" class="card-img-top" style="max-height: 250px;">
         <div class="card-body" style="background-color : #FEEAA1;">
           <h5 class="card-title" style="color : #D6955B;">{{realisation.titre}}</h5>
           <p class="card-text">{{realisation.description}}</p>

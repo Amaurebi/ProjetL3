@@ -29,7 +29,7 @@ class RealisationController extends AbstractController
         $realisations = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            1
+            5
         );
         return $this->render('realisation/index.html.twig', [
             'pagination' => $realisations,

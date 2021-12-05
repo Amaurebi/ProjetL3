@@ -48,25 +48,19 @@ class Realisation
     private $cout;
 
     /**
-     * @ORM\Column(type="smallint")
-     */
-    private $etat;
-
-    /**
      * @ORM\OneToMany(targetEntity=Fichier::class, mappedBy="realisationId")
      */
     private $fichiers;
 
     /**
-     * @ORM\OneToOne(targetEntity=fichier::class, cascade={"persist", "remove"})
+     * @ORM\Column(type="boolean")
      */
-    private $image;
+    private $afficher;
 
     /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
-     * @var File
+     * @ORM\ManyToOne(targetEntity=Categorie::class)
      */
-    private $imageFile;
+    private $categorie;
 
     public function __construct()
     {
@@ -138,18 +132,6 @@ class Realisation
         return $this;
     }
 
-    public function getEtat(): ?int
-    {
-        return $this->etat;
-    }
-
-    public function setEtat(int $etat): self
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Fichier[]
      */
@@ -180,15 +162,32 @@ class Realisation
         return $this;
     }
 
-    public function getImage(): ?fichier
+    public function getAfficher(): ?bool
     {
-        return $this->image;
+        return $this->afficher;
     }
 
-    public function setImage(?fichier $image): self
+    public function setAfficher(bool $afficher): self
     {
-        $this->image = $image;
+        $this->afficher = $afficher;
 
         return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function __toString(): ?string
+    {
+        return $this->id . "-" . $this->titre;
     }
 }

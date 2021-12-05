@@ -4,26 +4,14 @@
 
 {% block body %}
     {% include 'header.html.twig' %}
-        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto" style="margin-top: 100px;">
             <div class="container-fluid">
-            <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="color : #D6955B;">Realisation</h2>
+            <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="color : #D6955B;">Réalisations</h2>
             {% for realisation in pagination %}
-               {# <tr>
-                    <td>{{ realisation.titre }}</td>
-                    <td>{{ realisation.description }}</td>
-                    <td>{{ realisation.dateDebut ? realisation.dateDebut|date('Y-m-d') : '' }}</td>
-                    <td>{{ realisation.dateFin ? realisation.dateFin|date('Y-m-d') : '' }}</td>
-                    <td>{{ realisation.cout }}</td>
-                    <td>{{ realisation.etat }}</td>
-                    <td>
-                        <a href="{{ path('realisation_show', {'id': realisation.id}) }}">show</a>
-                        <a href="{{ path('realisation_edit', {'id': realisation.id}) }}">edit</a>
-                    </td>
-                </tr> #}
                 <div class="card mb-3" style="border : 2px solid #D6955B;">
                     <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="{{realisation.image.url}}" class="img-fluid rounded-start" alt="...">
+                        <img src="/uploads/images/realisation/{{realisation.fichiers|first.url}}" class="img-fluid rounded-start">
                     </div>
                     <div class="col-md-8" style="background-color : #FEEAA1;">
                         <div class="card-body">

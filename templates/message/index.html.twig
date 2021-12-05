@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messagerie{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+    <div class="container-fluid h-70" style="margin-top : 120px;">
+        <div class="row" style="border : 2px solid #D6955B;">
+            <div class="col-12 col-md-4 p-3">
+                <ul class="list-group">
+                {% for message in messages %}
+                    {#<li style="height : 70px;">
+                        <a class="text-decoration-none text-white text-center fs-4 mt-4" href="{{ path('message_show', { 'id': message.id }) }}">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">{{message.user.nom}} {{message.user.prenom}}</div>
+                                {{message.objet}}
+                            </div>
+                        </a>
+                    </li>#}
+                    <a href="{{ path('message_show', { 'id': message.id }) }}" class="list-group-item list-group-item-action text-white"  style="background-color: #18534F;">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{message.user.nom}} {{message.user.prenom}}</h5>
+                        </div>
+                        <p class="mb-1">{{message.objet}}</p>
+                        <small>{{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}</small>
+                    </a>
+                {% else %}
+                    <p>no records found</p>
+                {%endfor%}
+                </ul>
+            </div>
+            <div class="col-8" style="border-left : 2px solid #D6955B; height = 700px;">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ messages|first.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Corp</th>
+                            <td>{{ messages|first.corp }}</td>
+                        </tr>
+                        <tr>
+                            <th>Objet</th>
+                            <td>{{ messages|first.objet }}</td>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <td>{{ messages|first.time ? messages|first.time|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html.twig' %}
+{% endblock %}

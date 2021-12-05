@@ -22,6 +22,24 @@ class RealisationRepository extends ServiceEntityRepository
     public function last3()
     {
         return $this->createQueryBuilder('r')
+            ->where('r.afficher = :t')
+            ->setParameter('t', 1)
+            ->orderBy('r.dateFin', 'ASC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function last3ByCategory($v)
+    {
+        return $this->createQueryBuilder('r')
+            ->join('r.categorie', 'c')
+            ->addSelect('c')
+            ->where('r.afficher = :t')
+            ->setParameter('t', 1)
+            ->andWhere('c.id = :val')
+            ->setParameter('val', $v)
             ->orderBy('r.dateFin', 'ASC')
             ->setMaxResults(3)
             ->getQuery()
@@ -32,6 +50,8 @@ class RealisationRepository extends ServiceEntityRepository
     public function findAllByDate()
     {
         return $this->createQueryBuilder('r')
+            ->where('r.afficher = :t')
+            ->setParameter('t', 1)
             ->orderBy('r.dateFin', 'ASC')
             ->getQuery()
             ->getResult()
