@@ -27,7 +27,7 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route("/message/new", name="message_new", methods={"GET", "POST"})
+     * @Route("/user/message/new", name="message_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -39,7 +39,7 @@ class MessageController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
-            return $this->redirectToRoute('message_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('message_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('message/new.html.twig', [

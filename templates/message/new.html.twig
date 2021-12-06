@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Message{% endblock %}
+{% block title %}Nous contacter{% endblock %}
 
 {% block body %}
-    <h1>Create new Message</h1>
-
-    {{ include('message/_form.html.twig') }}
-
-    <a href="{{ path('message_index') }}">back to list</a>
+{% include 'header.html.twig' %}
+{% include 'home/slider.html.twig' %}
+<div class="position-absolute start-50 translate-middle" style="top : 270px;">
+  <h1 class="p-4 text-white border border-white border-5 fw-bold display-1">Nous contacter</h1>
+</div>
+<div class="container-fluid">
+    <div class="col-12 col-lg-8">
+        <div class="col-12 col-md-6"></div>
+        <div class="col-12 col-md-6">{{ include('message/_form.html.twig') }}</div>
+    </div>
+</div>
+{% include 'footer.html.twig' %}
 {% endblock %}
