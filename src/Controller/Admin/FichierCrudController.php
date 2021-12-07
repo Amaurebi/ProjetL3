@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Fichier;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -20,7 +23,7 @@ class FichierCrudController extends AbstractCrudController
     {
         return [
             TextField::new('legende'),
-            TextField::new('imageFile')->setFormType(VichImageType::class),
+            TextField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
             ImageField::new('url')->setBasePath('/uploads/images/realisation/')->onlyOnIndex(),
             AssociationField::new('realisationId'),
         ];

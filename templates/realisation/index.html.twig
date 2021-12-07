@@ -8,19 +8,21 @@
             <div class="container-fluid">
             <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="color : #D6955B;">Réalisations</h2>
             {% for realisation in pagination %}
-                <div class="card mb-3" style="border : 2px solid #D6955B;">
-                    <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="/uploads/images/realisation/{{realisation.fichiers|first.url}}" class="img-fluid rounded-start">
-                    </div>
-                    <div class="col-md-8" style="background-color : #FEEAA1;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ realisation.titre }}</h5>
-                            <p class="card-text">{{ realisation.description }}</p>
+                <a class="text-decoration-none text-dark" href="{{ path('realisation_show', {'id': realisation.id}) }}">
+                    <div class="card mb-3" style="border : 2px solid #D6955B;">
+                        <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="/uploads/images/realisation/{{realisation.fichiers|first.url}}" class="img-fluid rounded-start">
+                        </div>
+                        <div class="col-md-8" style="background-color : #FEEAA1;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ realisation.titre }}</h5>
+                                <p class="card-text">{{ realisation.description }}</p>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                    </div>
-                </div>
+                </a>
             {% else %}
                 <tr>
                     <td colspan="9">no records found</td>

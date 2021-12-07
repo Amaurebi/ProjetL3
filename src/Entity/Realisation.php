@@ -48,7 +48,7 @@ class Realisation
     private $cout;
 
     /**
-     * @ORM\OneToMany(targetEntity=Fichier::class, mappedBy="realisationId")
+     * @ORM\OneToMany(targetEntity=Fichier::class, mappedBy="realisationId", cascade={"persist"})
      */
     private $fichiers;
 

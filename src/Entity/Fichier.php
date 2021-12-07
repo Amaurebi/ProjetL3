@@ -100,9 +100,12 @@ class Fichier
         return $this->imageFile;
     }
 
-    /*public function __toString(): ?string
+    public function __toString(): ?string
     {
+        if($this->url == null) {
+            return "abc";
+        }
         return $this->url;
-    }*/
+    }
 
 }

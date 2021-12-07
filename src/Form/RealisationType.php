@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class RealisationType extends AbstractType
 {
@@ -18,6 +19,13 @@ class RealisationType extends AbstractType
             ->add('description')
             ->add('dateDebut')
             ->add('dateFin')
+            ->add('cout')
+            /*->add('fichiers', CollectionType::class, [
+                'entry_type' => FichierType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true
+            ]);*/
         ;
     }
 

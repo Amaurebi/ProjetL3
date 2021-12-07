@@ -17,15 +17,15 @@
   <h2 class="text-center mt-5 lh-lg fs-1 fw-bold" style="letter-spacing : 4px; color : #D6955B;">Dernières Couvertures</h2>
   <div class="row col-12 col-xl-10 mx-auto">
   {% for realisation in realisations %}
-    <div class="col-12 col-md-6 col-lg-4 mt-4">
-      <div class="card  mx-auto" style="width: 19rem; border : 2px solid #D6955B;">
+    <a class="col-12 col-md-6 col-lg-4 mt-4 text-decoration-none text-dark" href="{{ path('realisation_show', {'id': realisation.id}) }}">
+      <div class="card h-100 mx-auto" style="width: 19rem; border : 2px solid #D6955B;">
         <img src="/uploads/images/realisation/{{realisation.fichiers|first.url}}" class="card-img-top" style="max-height: 250px;">
         <div class="card-body" style="background-color : #FEEAA1;">
           <h5 class="card-title" style="color : #D6955B;">{{realisation.titre}}</h5>
           <p class="card-text">{{realisation.description}}</p>
         </div>
       </div>
-    </div>
+    </a>
   {% else %}
     <p>no records found</p>
   {%endfor%}

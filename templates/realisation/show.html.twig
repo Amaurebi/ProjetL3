@@ -3,44 +3,37 @@
 {% block title %}Realisation{% endblock %}
 
 {% block body %}
-    <h1>Realisation</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>RealisationId</th>
-                <td>{{ realisation.realisationId }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ realisation.titre }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ realisation.description }}</td>
-            </tr>
-            <tr>
-                <th>DateDebut</th>
-                <td>{{ realisation.dateDebut ? realisation.dateDebut|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DateFin</th>
-                <td>{{ realisation.dateFin ? realisation.dateFin|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Cout</th>
-                <td>{{ realisation.cout }}</td>
-            </tr>
-            <tr>
-                <th>Etat</th>
-                <td>{{ realisation.etat }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('realisation_index') }}">back to list</a>
+    {% include 'header.html.twig' %}
+    <div class="col-12 col-md-10 col-lg-8 mx-auto" style="margin-top: 100px;">
+    <h1 class="text-center mt-5 lh-lg fs-1 fw-bold" style="color : #D6955B;">{{ realisation.titre }}</h1>
+    <h3 class="mt-5 lh-lg fs-3 fw-bold" style="color : #D6955B;">Description</h3>
+    <p class="fs-5">{{ realisation.description }}</p>
+    <h3 class="mt-3 lh-lg fs-3 fw-bold" style="color : #D6955B;">Début</h3>
+    <p class="fs-5">{{ realisation.dateDebut ? realisation.dateDebut|date('d-m-Y') : '' }}</p>
+    <h3 class="mt-3 lh-lg fs-3 fw-bold" style="color : #D6955B;">Fin</h3>
+    <p class="fs-5">{{ realisation.dateFin ? realisation.dateFin|date('d-m-Y') : '' }}</p>
+    <h3 class="mt-3 lh-lg fs-3 fw-bold" style="color : #D6955B;">Cout totale</h3>
+    <p class="fs-5">{{ realisation.cout }}</p>
+    <h3 class="mt-3 lh-lg fs-3 fw-bold" style="color : #D6955B;">Galerie d'images</h3>
+    <div class="row">
+    {% for image in realisation.fichiers %}
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card mx-auto">
+                <img class="mx-auto mw-100 mh-100" src="/uploads/images/realisation/{{image.url}}">
+                <div class="card-body" style="background-color : #FEEAA1;">
+                    <p class="card-text text-center">{{image.legende}}</p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>no records found</p>
+    {%endfor%}
+    </div>
+    {#<a href="{{ path('realisation_index') }}">back to list</a>
 
     <a href="{{ path('realisation_edit', {'id': realisation.id}) }}">edit</a>
 
-    {{ include('realisation/_delete_form.html.twig') }}
+    {{ include('realisation/_delete_form.html.twig') }}#}
+    </div>
+    {% include 'footer.html.twig' %}
 {% endblock %}
